@@ -7,11 +7,19 @@ export const ServiceTypeDefs = gql`
     description: String
   }
 
+  input TaskInput {
+    title: String
+    description: String
+  }
+
   type Query {
     getAllTasks: [Task]
+    getTask(_id: ID!): Task
   }
 
   type Mutation {
-    createTask(title: String, description: String): Task
+    createTask(title: String!, description: String): Task
+    deleteTask(_id: ID!): String
+    updateTask(_id: ID!, task: TaskInput): Task
   }
 `
